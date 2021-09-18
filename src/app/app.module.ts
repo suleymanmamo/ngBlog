@@ -1,18 +1,48 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import { BrowserModule } from "@angular/platform-browser";
+import { NgModule } from "@angular/core";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
+import { AppRoutingModule } from "./app-routing.module";
+import { AppComponent } from "./app.component";
+import { NavBarComponent } from "./nav-bar/nav-bar.component";
+import { FooterComponent } from "./footer/footer.component";
+import { ArticleListComponent } from "./article-list/article-list.component";
+import { ArticlleComponent } from "./articlle/articlle.component";
+import { AboutComponent } from "./about/about.component";
+import { NotFoundComponent } from "./not-found/not-found.component";
+import { DashboardComponent } from "./dashboard/dashboard.component";
+import { ArticleOverviewComponent } from "./dashboard/article-overview/article-overview.component";
+import { EditArticleComponent } from "./dashboard/edit-article/edit-article.component";
+import { FormsModule } from "@angular/forms";
+import { LoginComponent } from "./login/login.component";
+import { Interceptor } from "./interceptor";
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NavBarComponent,
+    FooterComponent,
+    ArticleListComponent,
+    ArticlleComponent,
+    AboutComponent,
+    NotFoundComponent,
+    ArticleOverviewComponent,
+    EditArticleComponent,
+    DashboardComponent,
+    LoginComponent,
   ],
   imports: [
-    BrowserModule,
-    AppRoutingModule
+    BrowserModule.withServerTransition({ appId: "serverApp" }),
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: Interceptor,
+      multi: true,
+    },
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

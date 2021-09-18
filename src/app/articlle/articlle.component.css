@@ -1,0 +1,21 @@
+img {
+  max-height: 250px;
+}
+
+.article {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.article-image {
+  text-align: center;
+}
+
+.title {
+  font-size: 52px;
+}
+
+p {
+  line-height: 1.5rem;
+  font-size: 21px;
+}
