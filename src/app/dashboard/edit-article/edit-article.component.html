@@ -17,7 +17,7 @@
   </div>
   <div class="property">
     <label>Description</label>
-    <textarea type="text" [(ngModel)]="article.description" class="description"></textarea>
+    <textarea type="text" [(ngModel)]="article.description" class="description" maxlength="140"></textarea>
   </div>
   <div class="character-count">Characters: {{ article.description.length }}</div>
   <div class="property">
